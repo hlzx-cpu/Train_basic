@@ -13,12 +13,11 @@ void usrctrlDisplay() {
             Controller.Screen.clearScreen();
             // Show selected auto program
             Controller.Screen.setCursor(5, 1);
-            Controller.Screen.print("Auto %s       ",
-                                    auton_type_name[static_cast<int>(auton_side)].c_str());
+            Controller.Screen.print(
+                "Auto %s       ", auton_type_name[static_cast<int>(auton_side)].c_str());
             first_time = false;
         }
         Point pos = Position::getInstance()->getPos();
-
 
         my_brain->Screen.setCursor(3, 1);
         my_brain->Screen.print("x: %.2f y: %.2f IMU: %.2f %.2f", pos._x, pos._y,

@@ -6,8 +6,8 @@
 #include "basic_function.h"
 #include "vex.h"
 
-
-void autonTest(); // 自动函数
+void autonomous_1();
+void autonomous_2();
 void autonomous();
 
 #endif

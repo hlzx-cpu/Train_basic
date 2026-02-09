@@ -15,6 +15,5 @@ motor Motor_LB = motor(PORT4, ratio6_1, false);
 motor Motor_RB = motor(PORT5, ratio6_1, false);
 
 // 配置动力电机的部分 -> 通过控制true和false来实现电机正反转
-motor Motor_Drum = motor(PORT6, ratio36_1, false);
 motor Motor_Intake = motor(PORT7, ratio36_1, false);
 motor Motor_Shooter = motor(PORT8, ratio36_1, false);

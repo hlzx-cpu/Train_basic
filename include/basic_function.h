@@ -2,10 +2,16 @@
 #define BASIC_FUNCTIONS_H_
 #include "robot_config.h"
 
-void moveTestMotor(double percent);
+void setMotorEvent(int _event);
+void autonMotor();
+void IMUReset();
 
-// 新增
 void turnTo(double tar_angle);
-void PIDDistanceForwardRel(double target);
+void moveTo(double target);
+
+void moveIntake(float pct);
+void moveShooter(float pct);
+
+void autonMotor();
 
 #endif

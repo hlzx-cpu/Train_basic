@@ -7,18 +7,13 @@
 using namespace std;
 using namespace vex;
 
-double getDis() {
-    return (Motor_LF.position(rotationUnits::deg) +
-            Motor_LB.position(rotationUnits::deg) +
-            Motor_RF.position(rotationUnits::deg) +
-            Motor_RB.position(rotationUnits::deg)) /
-           360 * 3.25 * 25.4 * 3.141 / 2 / 4.0;
-}
-
+//@brief 第一套自动程序
 void autonomous_1() {}
 
+//@brief 第二套自动程序
 void autonomous_2() {}
 
+//@brief 总控
 void autonomous() {
     cout << "Entering autonomous" << endl;
     robot_operation_mode = RobotOperationMode::AUTO;

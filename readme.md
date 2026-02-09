@@ -33,13 +33,65 @@
     ## 选好端口，用true和false来实现电机的正转和反转
     ## 文件怎么连接： 使用头文件的.h，把函数和变量放在.h 文件就是开放了接口。在文件的最开始使用#include ......来实现文件的串联
     ## 外部需要调用的部分前面加上 extern
+    ## 调用电机的方式（pct/电压/转速）
 
 3. 球路状态部分（cout具体内容） -> 状态机
-   ## 为什么要用状态机： 
+   ## 为什么要用状态机： a. 实现非阻遏控制 b. 实现球路和运动单独控制
+   ## 状态机怎么写？
+   ## 是否需要防堵转的代码？
+   // 在 basic_function.h 中定义
+enum MotorEvent {
+    STOP,
+    INTAKE_FORWARD,
+    INTAKE_REVERSE,
+    SHOOTER_FORWARD,
+    SHOOTER_REVERSE,
+    BOTH_FORWARD,
+    BOTH_REVERSE
+};
+
+// 改为
+static MotorEvent motor_event = STOP;
+static MotorEvent last_motor_event = STOP;
+
+void setMotorEvent(MotorEvent _event) { motor_event = _event; }
+
+void autonMotor(){
+    switch(motor_event){
+        case STOP:
+            moveIntake(0);
+            moveShooter(0);
+            break;
+        case INTAKE_FORWARD:
+            moveIntake(100);
+            moveShooter(0);
+            break;
+        case INTAKE_REVERSE:
+            moveIntake(-100);
+            moveShooter(0);
+            break;
+        case SHOOTER_FORWARD:
+            moveIntake(0);
+            moveShooter(100);
+            break;
+        case SHOOTER_REVERSE:
+            moveIntake(0);
+            moveShooter(-100);
+            break;
+        case BOTH_FORWARD:
+            moveIntake(100);
+            moveShooter(100);
+            break;
+        case BOTH_REVERSE:
+            moveIntake(-100);
+            moveShooter(-100);
+            break;
+    }
+}
 
 4. pid移动部分（cout）
 
-5. usercontrol怎么写
+5. usercontrol怎么写（怎么判断搜寻的逻辑/是否存在键位冲突）
 
 6. display
 
