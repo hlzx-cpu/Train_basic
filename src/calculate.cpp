@@ -5,8 +5,10 @@ using namespace std;
 const double PI = M_PI;
 const float WheelDiameter = 4.0; // 轮子直径，厘米
 
-double IMU_coefficient = 1.0; // IMU修正系数（一般用转10圈计算）
+//@brief IMU修正系数（一般用转10圈计算）
+double IMU_coefficient = 1.0; 
 
+//@brief 角度归一化到[-180,180)
 double degNormalize(double deg) {
     deg = fmod(deg + 180, 360);
     if (deg <= 0) deg += 360;
