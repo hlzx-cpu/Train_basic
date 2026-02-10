@@ -240,6 +240,8 @@ void moveTo(double targetDis, int timeout, double maxPercentage, int tol_dis,
             double _i_max) {
 
     PID movePID;
+    cout << "move  " << endl;
+    cout<<"Target: " << targetDis << " "<< endl;
 
     movePID.setCoefficients(_kp, _ki, _kd);
     movePID.setTarget(targetDis);
@@ -250,17 +252,19 @@ void moveTo(double targetDis, int timeout, double maxPercentage, int tol_dis,
 
     resetMotor();
 
-    timer timeoutTimer;
-    timeoutTimer.reset();
+    timer moveTimer;
+    moveTimer.reset();
 
-    while (!movePID.isSettled() && timeoutTimer.time(msec) < timeout) {
+    while (!movePID.isSettled() && moveTimer.time(msec) < timeout) {
         double currentPos = getDis();
 
         double outputVolt = movePID.update(currentPos);
         moveForwardVoltage(outputVolt);
 
-        this_thread::sleep_for(10);
+        this_thread::sleep_for(50);
     }
+    cout<<"Actual: " << getDis() << " "<< endl;
+    cout << "Time: " << moveTimer.time(msec) << endl << endl;
 
     brakeChassic();
 }
@@ -281,6 +285,8 @@ void turnTo(double targetAngle, int timeout, double maxPercentage, int tol_angle
             double _i_max) {
 
     PID turnPID;
+    cout << "move  " << endl;
+    cout<<"Target: " << targetAngle << " "<< endl;
 
     turnPID.setCoefficients(_kp, _ki, _kd);
     turnPID.setTarget(degNormalize(targetAngle));
@@ -298,8 +304,11 @@ void turnTo(double targetAngle, int timeout, double maxPercentage, int tol_angle
         double outputVolt = turnPID.update(currentHeading);
         turnRightVoltage(outputVolt);
 
-        this_thread::sleep_for(10);
+        this_thread::sleep_for(50);
     }
+
+    cout<<"Actual: " << IMUHeading() << " "<< endl;
+    cout << "Time: " << turnTimer.time(msec) << endl << endl;
 
     brakeChassic();
 }

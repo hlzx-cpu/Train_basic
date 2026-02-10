@@ -4,12 +4,10 @@
 #include "controller.h"
 #include "vex.h"
 
-void motorTestControl();
-
-void testTurnTo();
-void testPIDDistanceForward();
-void testAuton();
-
+void botInit();
+void debug();
+void ballPathControl();
+void autonChooser();
 void allDeviceControl();
 void userControl();
 

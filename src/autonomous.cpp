@@ -8,10 +8,18 @@ using namespace std;
 using namespace vex;
 
 //@brief 第一套自动程序
-void autonomous_1() {}
+void autonomous_1() {
+moveTo(100, 5000, 80, 5, 200, 0.5, 0.0, 0.1, 50, 20);
+moveTo(-100, 5000, 80, 5, 200, 0.5, 0.0, 0.1, 50, 20);
+brakeChassic();
+}
 
 //@brief 第二套自动程序
-void autonomous_2() {}
+void autonomous_2() {
+moveTo(150, 5000, 80, 5, 200, 0.6, 0.0, 0.1, 50, 20);
+turnTo(90, 3000, 60, 3, 100, 0.7, 0.0, 0.1, 30, 15);
+brakeChassic();
+}
 
 //@brief 总控
 void autonomous() {

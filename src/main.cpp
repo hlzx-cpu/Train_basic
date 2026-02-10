@@ -6,6 +6,7 @@ using namespace vex;
 competition Competition;
 
 int main() {
+    botInit();
     thread Tcontroller(defineController);
     
     // 新增
